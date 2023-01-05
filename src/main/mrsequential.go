@@ -6,13 +6,16 @@ package main
 // go run mrsequential.go ../mrapps/wc.so pg*.txt
 //
 
-import "fmt"
-import "mr"
-import "plugin"
-import "os"
-import "log"
-import "io/ioutil"
-import "sort"
+import (
+	"fmt"
+	"io/ioutil"
+	"log"
+	"os"
+	"plugin"
+	"sort"
+
+	"mit-6.824-labs/src/mr"
+)
 
 // for sorting by key.
 type ByKey []mr.KeyValue
@@ -93,7 +96,7 @@ func main() {
 func loadPlugin(filename string) (func(string, string) []mr.KeyValue, func(string, []string) string) {
 	p, err := plugin.Open(filename)
 	if err != nil {
-		log.Fatalf("cannot load plugin %v", filename)
+		log.Fatalf("cannot load plugin %v, err: %v", filename, err)
 	}
 	xmapf, err := p.Lookup("Map")
 	if err != nil {

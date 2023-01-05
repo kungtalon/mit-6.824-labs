@@ -1,3 +1,3 @@
-module github.com/nsiregar/mit-go
+module mit-6.824-labs
 
-go 1.13
+go 1.16

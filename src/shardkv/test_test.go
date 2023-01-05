@@ -1,14 +1,16 @@
 package shardkv
 
-import "linearizability"
+import (
+	"fmt"
+	"math/rand"
+	"strconv"
+	"sync"
+	"sync/atomic"
+	"testing"
+	"time"
 
-import "testing"
-import "strconv"
-import "time"
-import "fmt"
-import "sync/atomic"
-import "sync"
-import "math/rand"
+	"mit-6.824-labs/src/linearizability"
+)
 
 const linearizabilityCheckTimeout = 1 * time.Second
 

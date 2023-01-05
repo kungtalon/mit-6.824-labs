@@ -7,12 +7,15 @@ package main
 // go build -buildmode=plugin rtiming.go
 //
 
-import "mr"
-import "fmt"
-import "os"
-import "syscall"
-import "time"
-import "io/ioutil"
+import (
+	"fmt"
+	"io/ioutil"
+	"os"
+	"syscall"
+	"time"
+
+	"mit-6.824-labs/src/mr"
+)
 
 func nparallel(phase string) int {
 	// create a file so that other workers will see that
@@ -34,6 +37,7 @@ func nparallel(phase string) int {
 	if err != nil {
 		panic(err)
 	}
+	time.Sleep(time.Second * 1)
 	ret := 0
 	for _, name := range names {
 		var xpid int
@@ -49,7 +53,7 @@ func nparallel(phase string) int {
 	}
 	dd.Close()
 
-	time.Sleep(1 * time.Second)
+	time.Sleep(400 * time.Millisecond)
 
 	err = os.Remove(myfilename)
 	if err != nil {

@@ -17,14 +17,15 @@ package raft
 //   in the same server.
 //
 
-import "sync"
-import "sync/atomic"
-import "labrpc"
+import (
+	"sync"
+	"sync/atomic"
+
+	"mit-6.824-labs/src/labrpc"
+)
 
 // import "bytes"
 // import "labgob"
-
-
 
 //
 // as each Raft peer becomes aware that successive log entries are
